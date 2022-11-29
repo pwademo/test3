@@ -4,7 +4,8 @@ nav: About Ex
 nav_order: 2
 ---
 
-Theis is some text.
+This is some text.
+# XXXXXX
 
 ## Example H2
 
