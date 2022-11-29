@@ -1,10 +1,16 @@
 ---
-title: Example Page
-nav: Example
+title: Lorem Ipsum
+nav: One
 nav_order: 1
 ---
 
-Write pages in Markdown.
+
+
+Lorem Ipsum
+1. ee   wqeeqwe
+2. ffsdasdfasfasdf
+3. dsfdsafffsd
+
 
 ## Heading Two 
 
