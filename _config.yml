@@ -9,12 +9,11 @@
 #######
 # SITE SETTINGS
 #
-title: Workshop Example
-description: "a basic example"
+title: Artist
+description: "a basic homepage for artists"
 year: 2022
 author: John Doe 
-# add search box to navbar, true/false
-search: true
+
 
 ##########
 # URL VARIABLES [optional!]
@@ -42,7 +41,7 @@ google-analytics-id:
 # ROBOTS EXCLUDE [optional!]
 #
 # set noindex to true if you do NOT want Google to index your site
-# noindex: true 
+noindex: true 
 
 
 #######
