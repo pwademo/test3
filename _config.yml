@@ -2,7 +2,6 @@
 #
 # bootstrap-template
 # basic bootstrap template for Jekyll with GitHub Pages
-# https://github.com/thecdil/bootstrap-template
 #
 #######
 
@@ -30,12 +29,6 @@ baseurl: /workshop-example
 # location of code, the full url to your github repository
 source-code: https://github.com/pwademo/workshop-example
 
-##########
-# GOOGLE ANALYTICS [optional!]
-#
-# leave this blank or comment out to NOT include google code
-# Add your google-analytics-id to automatically add the embed code, e.g. "UA-76328753-1"
-google-analytics-id:
 
 ##########
 # ROBOTS EXCLUDE [optional!]

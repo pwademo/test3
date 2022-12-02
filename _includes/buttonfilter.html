@@ -1,0 +1,15 @@
+{% comment %}
+
+    Bootstrap button link, https://getbootstrap.com/docs/4.5/components/button/
+
+    e.g. --> {% include button.html text="Example Button Link" link="https://example.com" color="success" %}
+
+    Options:
+    - "text" = main button text
+    - "category"= category
+    - type: removefilter eller forsale
+
+{%- endcomment -%}
+
+<span class="filter {% if include.type %}{% if include.type=='removefilter' %} filterselected {% endif %}{% endif %} " {% if include.type %} {% if include.type="removefilter" %}{% endif %} data-{{ include.type }} {% endif %}  {% if include.category %} data-category='{{ include.category }}'{% endif %}> {% if include.text %} {{ include.text }} {% endif %}</span>
+

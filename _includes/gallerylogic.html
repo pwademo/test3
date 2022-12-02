@@ -1,0 +1,116 @@
+
+{% comment %}
+   
+{% endcomment %}
+
+<script>
+
+
+
+function displayImages(data,kuntilsalg=false,categories=[]){
+        console.log("Categories",categories);
+        document.querySelector(".grid-container").innerHTML=data
+            .filter((data)=>{
+               
+                if(categories.length>0 && kuntilsalg){
+                    return data.hidden!==true && categories.includes(data.category.toLowerCase()) && data.sold!=true
+                }
+                if(categories.length>0){
+                    return data.hidden!==true && categories.includes(data.category.toLowerCase()) 
+                }
+                if(kuntilsalg){
+                    return data.hidden!==true && data.sold!=true
+                }
+                return data.hidden!==true 
+            })
+            .sort((a, b) => (a.order > b.order) ? 1 : -1)
+            .map((item)=>{
+                if(kuntilsalg){
+                    return    `
+                        <div>
+                                <a href="/jekyll-test2/billede.html#id=${item.filename}">
+                                    <img src="https://kirstenpoulsgaard.dk/billeder/${item.filename}" alt="Kirsten Poulsgaard">
+                                </a>  
+                                <span style="float:left">${item.price}</span><span style="float:right">${item.size}</span>
+                                <br/ style="clear:both"><br/>                                                    
+                        </div>                        
+                        `  
+                }
+                else {
+                    return    `
+                        <div>
+                                <a href="/jekyll-test2/billede.html#id=${item.filename}">
+                                    <img src="https://kirstenpoulsgaard.dk/billeder/${item.filename}" alt="Kirsten Poulsgaard">
+                                </a>                 
+                        </div>
+                        
+                        `  
+                }
+            })
+            .join("\n");                
+            
+    }
+
+    displayImages(myJson);        
+
+/*   const btnAlle=document.getElementById("btnAlle");  */ 
+    //const btnTilSalg=document.getElementById("btnTilSalg");      
+
+/*     btnAlle.addEventListener("click",()=>{
+        btnAlle.disabled = true;
+        btnTilSalg.disabled = false;
+        displayImages(myJson,false);
+    }) 
+*/
+/*     btnTilSalg.addEventListener("click",()=>{
+       
+
+        btnTilSalg.disabled = true;
+        displayImages(myJson,true);
+    }) */
+
+
+
+
+
+    //Radio Bottons for filtering
+    const filterButtons = document.querySelectorAll(".filter");
+    const filterButtonRemovefilter = document.querySelector("[data-removefilter]");   
+    filterButtons.forEach(item => {
+        item.addEventListener('click', () =>         
+            {
+                item.classList.toggle("filterselected");   
+
+                const filtersSelectedExceptRemovefilter=document.querySelectorAll(".filterselected:not([data-removefilter])");                 
+                if(item.hasAttribute("data-removefilter") ){
+                   filtersSelectedExceptRemovefilter.forEach(btn=>btn.classList.remove("filterselected"));
+                    if(filterButtonRemovefilter) filterButtonRemovefilter.classList.add("filterselected");
+
+                   displayImages(myJson);
+
+                } else {
+                    if(filtersSelectedExceptRemovefilter.length===0){
+                        if(filterButtonRemovefilter) filterButtonRemovefilter.classList.add("filterselected");
+                        displayImages(myJson);
+                    }
+                    else {
+                        if(filterButtonRemovefilter) filterButtonRemovefilter.classList.remove("filterselected");//reset btn
+                        let categories=[];
+                        let forsale=false;
+                        filtersSelectedExceptRemovefilter.forEach(btn=>{
+                            if(btn.hasAttribute('data-forsale')){ forsale=true;}
+                            if(btn.hasAttribute('data-category')  && btn.getAttribute('data-category')){                                 
+                                categories.push(btn.getAttribute('data-category').toLowerCase());                                
+                            }                       
+                        });                        
+                        displayImages(myJson,forsale,categories);
+                    }
+                }
+            }        
+        );
+    });
+
+
+
+
+</script>

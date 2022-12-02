@@ -1,0 +1,147 @@
+/* 
+    Template styles 
+    see assets/css/custom.scss for variables
+*/
+
+/*
+#buttons {
+     display:inline;  
+     float: right; 
+     padding-top:10px; 
+     border:solid red 1px; 
+}
+
+button {
+    cursor: pointer;
+    padding: 12px 4px;
+    margin-right: 3px;
+    background: transparent;
+    color:var(--font-color-menu);            
+    border:none;            
+    text-transform: uppercase;
+
+}
+
+button:disabled {
+    color: var(--font-color-menuactive);
+    cursor: auto;
+}
+button:hover:enabled{
+    color: var(--font-color-menuhover);
+}
+*/
+
+/*include.removefilter wrapper i p-tag. For at undgå linjeskifte anvedes parent-selector */
+p:has(span.filter) { display:inline-flex;}
+
+
+.filter {
+    font-size: 10px;
+    cursor: pointer;
+    color: gray;
+    border: solid gray 1px;
+    padding: 2px 5px;
+    border-radius: 2px; 
+    margin-left:3px;  
+    user-select: none;//user can not select text on the botton
+    transition: background-color 500ms;    
+  }
+  
+  .filter.filterselected {
+    color:black; 
+    background-color: #ccc;
+  }
+
+  [data-removefilter].filter.filterselected{
+    cursor:default;
+    display: none;
+  }
+  
+
+
+
+
+
+
+h1{display:inline  }
+h2{
+    font-size: larger; 
+    margin-bottom: 10px;
+}
+
+#overskrift {
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+section {
+    padding: 0 30px;  /* Ved lille skærmbredde sættes padding left right */
+}
+
+.grid-container {
+    margin-top:35px;  
+    width:100%;       
+    display: grid;
+    grid-template-columns: 1fr  ;
+    grid-auto-flow: row;
+    gap: 40px;
+    align-items: flex-end; 
+    /* border:solid green 1px; */
+}
+
+.grid-container > div {
+    width: 100%; 
+    height: auto;
+    display: block;   
+}
+
+.grid-container > div>a> img {
+    width: 100%; 
+}
+
+
+@media only screen and (min-width: 500px) {
+    .grid-container {
+        grid-template-columns: repeat(2,1fr) ;
+    }
+
+    section {
+        padding:initial;  
+    }
+
+    #buttons {
+        display:inline;
+        float: right;    
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .grid-container {
+        grid-template-columns: repeat(3,1fr) ;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(4,1fr) ;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .grid-container {
+        grid-template-columns: repeat(5,1fr) ;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .grid-container {
+        grid-template-columns: repeat(6,1fr) ;
+    }
+}
+
+@media only screen and (min-width: 2100px) {
+    .grid-container {
+        grid-template-columns: repeat(7,1fr) ;
+    }
+}

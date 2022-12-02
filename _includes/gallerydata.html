@@ -1,0 +1,26 @@
+----
+----
+{% comment %}
+   Put data from site.data.billeder to javascript object
+{% endcomment %}
+
+
+<script>
+    const myJson = 
+        [
+          {% for billede in site.data.billeder %}
+          {         
+              "filename": '{{ billede.filename }}',
+              "price": '{{ billede.price }}',
+              "sold": {{ billede.sold | default: false}},
+              "size":'{{ billede.size }}',
+              "order": {{ billede.order | default: 0 }},
+              "title":'{{ billede.price }}',
+              "teknik":'{{ billede.teknik }}',
+              "hidden":{{ billede.hidden | default: false}} ,
+              "category":'{{ billede.category }}'        
+          },
+          {% endfor %}
+        ]
+    
+</script>
