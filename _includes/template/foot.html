@@ -1,7 +1,18 @@
 <!-- jquery and bootstrap js -->
-<script src="{{ '/assets/lib/jquery-3.6.0.min.js' | relative_url }}" ></script>
-<script src="{{ '/assets/lib/bootstrap.bundle.min.js' | relative_url }}"></script>
+<!-- <script src="{{ '/assets/lib/jquery-3.6.0.min.js' | relative_url }}" ></script>
+<script src="{{ '/assets/lib/bootstrap.bundle.min.js' | relative_url }}"></script> -->
 <!-- other js -->
+<script>
+    function onclickHamburger() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+        x.className += " responsive";
+        } else {
+        x.className = "topnav";
+        }
+    }
+</script>
+
 {% if page.foot %}{% include {{ page.foot }} %}{% endif %}
 {% if layout.foot %}{% include {{ layout.foot }} %}{% endif %}
 {% include template/scroll-to-top.html %}
