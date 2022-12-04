@@ -1,0 +1,64 @@
+
+<script>
+
+
+const params = new URLSearchParams(window.location.hash.substr(1));
+        const id=params.get("id");
+
+        function displayImages(data){
+           
+        let galleri=document.querySelector(".grid-container");
+        
+        galleri.innerHTML=data
+            .filter((data)=>{
+                return data.filename===id && data.hidden!==true
+            })
+            .map((item)=>{
+                let subtext="";
+		if(item.title) subtext+=`<p>${item.title} </p>`
+                if(item.size) subtext+=`<p>${item.size} </p>`
+		if(item.teknik) subtext+=`<p>${item.teknik} </p>`                
+                if(item.price) subtext+=`<p><b>${item.price}</b> </p>`
+                if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>`
+                return  `                
+                <img class="billede" id="billede" style="pointer-events:unset;"  src="https://kirstenpoulsgaard.dk/billeder/${item.filename.replace(".jpeg","")}-900.jpeg" alt="Kirsten Poulsgaard">
+                <div>
+                    ${subtext}
+                </div>
+                `  
+            }).join("\n");            
+        }
+
+   
+    displayImages(myJson);
+
+    
+    //
+    let lastPageUrl = document.referrer
+    if(lastPageUrl){
+        let lasturl=new URL(lastPageUrl);
+        
+        if(lasturl.pathname=="/workshop-example/gallery.html"){
+
+            document.querySelector(".grid-container").addEventListener("click",()=>
+            { 
+               /*  window.history.back(); */
+               window.history.go(-1);//Forsøg at få browser til at gå tilbage på samme scroll position
+            });           
+        }
+        else {            
+            document.querySelector(".grid-container").addEventListener("click",()=>
+            { 
+                window.location.pathname = ('/workshop-example/gallery.html')
+            });
+        }
+
+    }
+    else 
+    {
+        document.querySelector(".grid-container").addEventListener("click",()=>
+        { 
+             window.location.pathname = ('/galleri.html')
+        });
+    }
+</script>

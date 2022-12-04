@@ -1,11 +1,5 @@
 
-{% comment %}
-   
-{% endcomment %}
-
 <script>
-
-
 
 function displayImages(data,kuntilsalg=false,categories=[]){
         console.log("Categories",categories);
@@ -28,7 +22,7 @@ function displayImages(data,kuntilsalg=false,categories=[]){
                 if(kuntilsalg){
                     return    `
                         <div>
-                                <a href="/jekyll-test2/billede.html#id=${item.filename}">
+                                <a href="/workshop-example/billede.html#id=${item.filename}">
                                     <img src="https://kirstenpoulsgaard.dk/billeder/${item.filename}" alt="Kirsten Poulsgaard">
                                 </a>  
                                 <span style="float:left">${item.price}</span><span style="float:right">${item.size}</span>
@@ -39,7 +33,7 @@ function displayImages(data,kuntilsalg=false,categories=[]){
                 else {
                     return    `
                         <div>
-                                <a href="/jekyll-test2/billede.html#id=${item.filename}">
+                                <a href="/workshop-example/billede.html#id=${item.filename}">
                                     <img src="https://kirstenpoulsgaard.dk/billeder/${item.filename}" alt="Kirsten Poulsgaard">
                                 </a>                 
                         </div>
@@ -51,27 +45,7 @@ function displayImages(data,kuntilsalg=false,categories=[]){
             
     }
 
-    displayImages(myJson);        
-
-/*   const btnAlle=document.getElementById("btnAlle");  */ 
-    //const btnTilSalg=document.getElementById("btnTilSalg");      
-
-/*     btnAlle.addEventListener("click",()=>{
-        btnAlle.disabled = true;
-        btnTilSalg.disabled = false;
-        displayImages(myJson,false);
-    }) 
-*/
-/*     btnTilSalg.addEventListener("click",()=>{
-       
-
-        btnTilSalg.disabled = true;
-        displayImages(myJson,true);
-    }) */
-
-
-
-
+    displayImages(myJson); 
 
     //Radio Bottons for filtering
     const filterButtons = document.querySelectorAll(".filter");
@@ -109,8 +83,4 @@ function displayImages(data,kuntilsalg=false,categories=[]){
             }        
         );
     });
-
-
-
-
 </script>

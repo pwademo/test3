@@ -1,17 +1,17 @@
-<nav class="navbar">
-    <div class="container">       
-        <div class="topnav" id="myTopnav">
-            <a class="navbar-brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-            {% assign nav_pages = site.html_pages | where_exp: 'p','p.nav' | sort: 'nav_order' %}
-            {% for p in nav_pages %}
-              <a href="{{ p.url | relative_url }}" class="{% if page.url == p.url %} active{% endif %}">{% if p.nav == true %}{{ p.title }}{% else %}{{ p.nav }}{% endif %}</a>
-            {% endfor %}
+<header>
+  <nav class="navbar">
+          <div class="menu" id="menu">
+              <a class="navbar-brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+              {% assign nav_pages = site.html_pages | where_exp: 'p','p.nav' | sort: 'nav_order' %}
+              {% for p in nav_pages %}
+                <a href="{{ p.url | relative_url }}" class="{% if page.url == p.url %} active{% endif %}">{% if p.nav == true %}{{ p.title }}{% else %}{{ p.nav }}{% endif %}</a>
+              {% endfor %}
 
-            <a href="javascript:void(0);" class="iconHamburger" onclick="onclickHamburger()"> 
-              <div></div>
-              <div></div>
-              <div></div>
-            </a>
-          </div>
-    </div>
-</nav>
+              <a href="javascript:void(0);" class="iconHamburger" onclick="onclickHamburger()"> 
+                <div></div>
+                <div></div>
+                <div></div>
+              </a>
+            </div>
+  </nav>
+</header>
