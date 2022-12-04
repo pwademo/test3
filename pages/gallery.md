@@ -14,5 +14,6 @@ nav_order: 2
  {% include buttonfilter.html type="removefilter" text="X" %}
  <div class="grid-container"></div>
 
-{% include gallerydata.html %}
+
+{% include gallerydata.html %} 
 {% include gallerylogic.html %}
