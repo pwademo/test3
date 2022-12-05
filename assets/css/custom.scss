@@ -5,6 +5,10 @@
 
 
 :root {
+
+  --doc-height: 100%;
+
+
   /* get colors from config.yml */
 
   {% if site.colors.background-color %}
