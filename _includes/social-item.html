@@ -1,0 +1,5 @@
+<li>
+    <a rel="me" href="{{ entry.user_url }}" target="_blank" title="{{ entry.title | default: entry.platform }}">
+        <img src="{{ '/assets/icons/' | append: entry.platform | relative_url }}.svg" alt="{{entry.platform}}">
+    </a>
+</li>

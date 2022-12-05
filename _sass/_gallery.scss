@@ -31,6 +31,14 @@ button:hover:enabled{
 }
 */
 
+/*Billede - sætter max-widt og max-height i forhold til skærm*/
+.billede {
+    max-width: 90vw;
+     max-height: 70vh;  
+}
+
+
+
 /*include.removefilter wrapper i p-tag. For at undgå linjeskifte anvedes parent-selector */
 p:has(span.filter) { display:inline-flex;}
 

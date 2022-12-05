@@ -4,7 +4,32 @@
 @charset "utf-8";
 
 
+:root {
+  /* get colors from config.yml */
 
+  {% if site.colors.background-color %}
+    --background-color: {{ site.colors.background-color}};
+  {% else %}
+    --background-color: yellow;  
+  {% endif %}
+
+  {% if site.colors.background-color-header %}
+    --background-color-header: {{ site.colors.background-color-header}};
+  {% else %}
+    --background-color-header: pink;  
+  {% endif %}
+
+
+    /* Farve på tekst */
+  --font-color: {{ site.colors.font-color }};
+  --font-color-menu: {{ site.colors.font-color-menu }};
+  --font-color-menuactive: {{ site.font-color-menuactive }};
+  --font-color-menuhover: {{ site.colors.font-color-menuhover }};
+  --font-color-mailaddress: {{ site.font-color-mailaddress }};
+
+  /* Farve på kunstnernavnet */
+  --font-color-menufirst: {{ site.font-color-menufirst }}; ;
+}
 
 /* Optionally tweak base body text and link color */
 $text-color: #111 !default;
