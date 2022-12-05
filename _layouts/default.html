@@ -10,7 +10,12 @@
             {{ content }}
         </main>
 
-       <!---->  {% include template/footer.html %} 
+        {% if site.nofooter!=true %}
+            {% if page.nofooter!=true %}
+                {% include template/footer.html %} 
+            {% endif %}
+        {% endif %}
+
         {% include template/foot.html %}
     </body>
 </html>

@@ -49,6 +49,11 @@ source-code: https://github.com/pwademo/workshop-example
 # set noindex to true if you do NOT want Google to index your site
 noindex: true 
 
+##########
+# Use footer [optional!]
+#
+# set usefooter to true if you do not want footer og yout site
+nofooter: false
 
 ##########
 # Social links
