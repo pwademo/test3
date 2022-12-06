@@ -13,6 +13,7 @@
     padding-bottom:  1em;
     background-color: var(--background-color-header);
     border-top:solid 1px black; 
+
   }
   footer>div {
      width: 90vw; 
@@ -21,6 +22,8 @@
   }
 
 .social-media-list{
+   margin:0;
+   padding:0;
    display:flex;
    padding-top:10px;
 }
@@ -56,8 +59,10 @@
     /* display: block; */
     color:var(--font-color-menu);   
     text-decoration: none;
-    text-transform: uppercase;   
+    /* text-transform: uppercase;    */
     margin-right: 8px;;
+
+    padding-bottom: 8px;      
   }  
 
   .navbar .menu a:hover {
@@ -72,7 +77,8 @@
   .navbar .menu a:nth-child(1)  { 
     color:var(--font-color-menufirst);    
     font-size: 40px;    
-    width: 100%;        
+    width: 100%;        /*Så den fylder helle rækken*/
+   /*  border:red solid 1px; */
   } 
 
   
@@ -113,11 +119,9 @@
     .navbar .menu.responsive a {
       display: block;   
       
-      padding-bottom: 6px;      
+      
     }
 
-    .navbar .menu.responsive a:nth-child(1) {
-     /*  padding-bottom: 8px;  */
-    }
+
 
   }

@@ -6,10 +6,10 @@
 #######
 # SITE SETTINGS
 #
-title: Artist
-description: "a basic homepage for artists"
+title: Paul Gaugin
+description: "a basic homepage for an artist"
 year: 2022
-author: John Doe 
+# author: John Doe 
 
 
 #######
@@ -61,11 +61,11 @@ nofooter: false
 social_links:
   - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
   - { platform: instagram,      user_url: "https://www.instagram.com/jekyll" }
-  - { platform: youtube,        user_url: "https://www.youtube.com/jekyll" }
-  - { platform: github,         user_url: "https://github.com/jekyll/minima" }
-  - { platform: linkedin,       user_url: "https://www.linkedin.com/in/jekyll" }
-  - { platform: pinterest,      user_url: "https://www.pinterest.com/jekyll" }
-  - { platform: twitter,        user_url: "https://twitter.com/jekyllrb" }
+ # - { platform: youtube,        user_url: "https://www.youtube.com/jekyll" }
+ # - { platform: github,         user_url: "https://github.com/jekyll/minima" }
+ # - { platform: linkedin,       user_url: "https://www.linkedin.com/in/jekyll" }
+ # - { platform: pinterest,      user_url: "https://www.pinterest.com/jekyll" }
+ # - { platform: twitter,        user_url: "https://twitter.com/jekyllrb" }
 
 #######
 # BUILD SETTINGS [usually leave as is]
