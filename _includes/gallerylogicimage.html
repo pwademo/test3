@@ -15,13 +15,20 @@
                     })
                     .map((item)=>{
                         let subtext="";
-                if(item.title) subtext+=`<p>${item.title} </p>`
-                        if(item.size) subtext+=`<p>${item.size} </p>`
-                if(item.teknik) subtext+=`<p>${item.teknik} </p>`                
+                        if(item.title) subtext+=`<p>${item.title} </p>`
+                        if(item.year) subtext+=`<p>${item.year} </p>`
+                        if(item.dimensions) subtext+=`<p>${item.dimensions} </p>`
+                        if(item.medium) subtext+=`<p>${item.medium} </p>`                
                         if(item.price) subtext+=`<p><b>${item.price}</b> </p>`
                         if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>`
+/*                         return  `                
+                        <img class="billede" id="billede" style="pointer-events:unset;"  src="/workshop-example/gallery/${item.filename.replace(".jpeg","")}-900.jpeg" alt="">
+                        <div>
+                            ${subtext}
+                        </div>
+                        `   */
                         return  `                
-                        <img class="billede" id="billede" style="pointer-events:unset;"  src="https://kirstenpoulsgaard.dk/billeder/${item.filename.replace(".jpeg","")}-900.jpeg" alt="Kirsten Poulsgaard">
+                        <img class="billede" id="billede" style="pointer-events:unset;"  src="/workshop-example/gallery/${item.filename}" alt="">
                         <div>
                             ${subtext}
                         </div>

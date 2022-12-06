@@ -67,8 +67,6 @@ social_links:
   - { platform: pinterest,      user_url: "https://www.pinterest.com/jekyll" }
   - { platform: twitter,        user_url: "https://twitter.com/jekyllrb" }
 
-
-
 #######
 # BUILD SETTINGS [usually leave as is]
 #

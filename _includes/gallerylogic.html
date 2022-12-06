@@ -1,31 +1,30 @@
 
 <script>
 
-function displayImages(data,kuntilsalg=false,categories=[]){
-        console.log("Categories",categories);
+function displayImages(data,isforsale=false,categories=[]){
+        //console.log("Categories",categories);
         document.querySelector(".grid-container").innerHTML=data
-            .filter((data)=>{
-               
-                if(categories.length>0 && kuntilsalg){
+            .filter((data)=>{               
+                if(categories.length>0 && isforsale){
                     return data.hidden!==true && categories.includes(data.category.toLowerCase()) && data.sold!=true
                 }
                 if(categories.length>0){
-                    return data.hidden!==true && categories.includes(data.category.toLowerCase()) 
+                    return data.hidden!==true && categories.includes(data.category.toLowerCase())
                 }
-                if(kuntilsalg){
+                if(isforsale){
                     return data.hidden!==true && data.sold!=true
                 }
-                return data.hidden!==true 
+                return data.hidden!==true
             })
-            .sort((a, b) => (a.order > b.order) ? 1 : -1)
+            .sort((a, b) => (a.order >= b.order) ? 1 : -1)
             .map((item)=>{
-                if(kuntilsalg){
+                if(isforsale){
                     return    `
                         <div>
                                 <a href="/workshop-example/billede.html#id=${item.filename}">
-                                    <img src="https://kirstenpoulsgaard.dk/billeder/${item.filename}" alt="Kirsten Poulsgaard">
+                                    <img src="/workshop-example/gallery/${item.filename}" alt="">
                                 </a>  
-                                <span style="float:left">${item.price}</span><span style="float:right">${item.size}</span>
+                                <span style="float:left">${item.price}</span><span style="float:right">${item.dimensions}</span>
                                 <br/ style="clear:both"><br/>                                                    
                         </div>                        
                         `  
@@ -34,15 +33,14 @@ function displayImages(data,kuntilsalg=false,categories=[]){
                     return    `
                         <div>
                                 <a href="/workshop-example/billede.html#id=${item.filename}">
-                                    <img src="https://kirstenpoulsgaard.dk/billeder/${item.filename}" alt="Kirsten Poulsgaard">
+                                    <img src="/workshop-example/gallery/${item.filename}" alt="">
                                 </a>                 
                         </div>
                         
                         `  
                 }
             })
-            .join("\n");                
-            
+            .join("\n");
     }
 
     displayImages(myJson); 

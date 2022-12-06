@@ -14,14 +14,15 @@ hr {
           {% for billede in site.data.billeder %}
           {         
               "filename": '{{ billede.filename }}',
+              "title":'{{ billede.title }}',
+              "year":'{{ billede.year }}',
+              "dimensions":'{{ billede.dimensions }}',
+              "medium":'{{ billede.medium }}',
+              "category":'{{ billede.category }}',
               "price": '{{ billede.price }}',
               "sold": {{ billede.sold | default: false}},
-              "size":'{{ billede.size }}',
               "order": {{ billede.order | default: 0 }},
-              "title":'{{ billede.price }}',
-              "teknik":'{{ billede.teknik }}',
-              "hidden":{{ billede.hidden | default: false}} ,
-              "category":'{{ billede.category }}'        
+              "hidden":{{ billede.hidden | default: false}} 
           },
           {% endfor %}
         ]
