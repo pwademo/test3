@@ -23,6 +23,12 @@
   {% else %}
     --background-color-header: pink;  
   {% endif %}
+  
+  {% if site.colors.background-color-footer %}
+    --background-color-footer: {{ site.colors.background-color-footer}};
+  {% else %}
+    --background-color-footer: pink;  
+  {% endif %}
 
 
     /* Farve på tekst */
