@@ -60,13 +60,13 @@
             }
 
           
-/* */       function initColor(thisid){
+            function initColor(thisid){
                 if(localStorage[thisid]) {
                     const _localStoreValue=localStorage[thisid];
                     document.documentElement.style.setProperty("--" + thisid, _localStoreValue);
                     document.getElementById(thisid).value = _localStoreValue;  
                 }            
-/**/            else {                    
+            else {                    
                     const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue("--" + thisid);                    
                     localStorage.setItem(thisid, _colorfromcss.trim());
                     document.getElementById(thisid).value = _colorfromcss.trim();  
