@@ -6,25 +6,20 @@
     <body>
         {% include template/header.html %}
 
-        <div style="border: solid 1px red;height: 300px; font-size: x-small;">
-         <label for"inputBackgroundColorheader">backgroundColorheader</label>
-         <input type="color" id="inputBackgroundColorheader" oninput="changeColor('backgroundColorheader','inputBackgroundColorheader','--background-color-header')">
-         <label for"inputBackgroundColorfooter">backgroundColorfooter</label>
-         <input type="color" id="inputBackgroundColorfooter" oninput="changeColor('backgroundColorfooter','inputBackgroundColorfooter','--background-color-footer')">
-         <label for"inputBackgroundColor">backgroundColor</label>
-         <input type="color" id="inputBackgroundColor" oninput="changeColor('backgroundColor','inputBackgroundColor','--background-color')">
-
-       <!--   <input type="color" id="inputBackgroundColorfooter" oninput="changeColorfooter()"> -->
+        <div draggable="true" style="border: solid 1px #111; position: fixed; top:10px;right: 10px; padding:5px;background-color: rgb(204, 210, 210);">
+            <p>
+                {% for setting in site.data.settings %}
+                    <label for="{{setting.key}}">{{setting.key}}</label>
+                    <input  type="color" id="{{setting.key}}" oninput="changeColor('{{setting.key}}')">
+                    <br/>
+                {% endfor %}
+            </p>
         </div>
 
 
         <main id="maincontent" role="main" aria-label="Content">
             {{ content }}
         </main>
-
-<!--         <label for"backgroundColor">backgroundColor</label><input type="color" id="backgroundColor" oninput="changeBackgroundColor()">
-         -->
-
 
         {% if site.nofooter!=true %}
             {% if page.nofooter!=true %}
@@ -51,31 +46,35 @@
             } */
 
           
-            function changeColor(storagename,thisid,cssvarname) { 
+            function changeColor(thisid) { 
+                console.log(thisid);
+                const userColor = document.getElementById(thisid).value;
+                document.documentElement.style.setProperty("--" + thisid, userColor);
+                localStorage.setItem(thisid, userColor);
+            }
+
+            function changeColorOld(thisid,cssvarname) { 
                 const userColor = document.getElementById(thisid).value;
                 document.documentElement.style.setProperty(cssvarname, userColor);
-                localStorage.setItem(storagename, userColor);
+                localStorage.setItem(thisid, userColor);
             }
 
           
-            function initColor(storagename,cssvarname,thisid){
-                if(localStorage[storagename]) {
-                    const _localStoreColor=localStorage[storagename];
-                    document.documentElement.style.setProperty(cssvarname, _localStoreColor);
-                    document.getElementById(thisid).value = _localStoreColor;  
+/* */       function initColor(thisid){
+                if(localStorage[thisid]) {
+                    const _localStoreValue=localStorage[thisid];
+                    document.documentElement.style.setProperty("--" + thisid, _localStoreValue);
+                    document.getElementById(thisid).value = _localStoreValue;  
                 }            
-                else {
-                    console.log(cssvarname);
-                    const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue(cssvarname);
-                    console.log("XXXX",_colorfromcss);
-                    localStorage.setItem(storagename, _colorfromcss.trim());
+/**/            else {                    
+                    const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue("--" + thisid);                    
+                    localStorage.setItem(thisid, _colorfromcss.trim());
                     document.getElementById(thisid).value = _colorfromcss.trim();  
-                }
+                } 
             }
-            initColor("backgroundColorheader","--background-color-header","inputBackgroundColorheader");
-            initColor("backgroundColorfooter","--background-color-footer","inputBackgroundColorfooter");            
-            initColor("backgroundColor","--background-color","inputBackgroundColor");
-            
+            {% for setting in site.data.settings %}
+                initColor("{{setting.key}}");  
+            {% endfor %}
 
 
 
