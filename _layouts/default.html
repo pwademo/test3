@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
     <head>
-        {% include template/head.html %}        
+        {% include template/head.html %}  
     </head>
     <body>
         {% include template/header.html %}
 
-        <div draggable="true" style="border: solid 1px #111; position: fixed; top:10px;right: 10px; padding:5px;background-color: rgb(204, 210, 210);">
+        <div id="mydiv" style="border: solid 1px #111; position: fixed; ">
+            <div id="mydivheader">Settings</div>
             <p>
                 {% for setting in site.data.settings %}
+                <div class="inputcolorcontainer">
                     <label for="{{setting.key}}">{{setting.key}}</label>
                     <input  type="color" id="{{setting.key}}" oninput="changeColor('{{setting.key}}')">
-                    <br/>
+                  </div>  
                 {% endfor %}
             </p>
         </div>
@@ -31,21 +33,7 @@
 
 
 
-        <script>
-/*             function changeBackgroundColor() { 
-                var userColor = document.getElementById('backgroundColor').value;
-                console.log(e);
-                localStorage.setItem('backgroundColor', document.body.style.backgroundColor = userColor);
-            }
-
-            if(localStorage.backgroundColor) {                
-                document.getElementById('backgroundColor').value = localStorage.backgroundColor;            
-                document.body.style.backgroundColor= localStorage.backgroundColor;
-            } else {
-                document.getElementById('backgroundColor').value="#cc00ff";
-            } */
-
-          
+        <script>          
             function changeColor(thisid) { 
                 console.log(thisid);
                 const userColor = document.getElementById(thisid).value;
@@ -79,5 +67,87 @@
 
 
         </script>
+
+<script>
+    
+    const _mydiv=document.getElementById("mydiv");
+
+    //Make the DIV element draggagle:
+    dragElement(_mydiv);
+    //set initial pos
+    _mydiv.style.left=localStorage["posleft"]; 
+    _mydiv.style.top=localStorage["postop"]; 
+
+   // console.log("posleft",_mydiv.style.left)
+    console.log("window.innerWidth",window.innerWidth)
+    console.log("_mydiv.style.width",_mydiv.clientWidth)
+    console.log("_mydiv.getBoundingClientRect().x",_mydiv.getBoundingClientRect().x)
+    
+    if(_mydiv.getBoundingClientRect().x +_mydiv.clientWidth>window.innerWidth-20){
+        let _posleft=window.innerWidth-_mydiv.clientWidth-20;
+        _mydiv.style.left=_posleft + "px";
+        localStorage.setItem("posleft", _posleft + "px");
+    }
+    if(_mydiv.getBoundingClientRect().top +_mydiv.clientHeight>window.innerHeight-20){
+        let _postop=window.innerHeight-_mydiv.clientHeight-20;
+        _mydiv.style.top=_postop + "px";
+        localStorage.setItem("posleft", _posleft + "px");
+    }
+    if(_mydiv.getBoundingClientRect().x<0){
+        _mydiv.style.left=5 + "px";
+    }
+    if(_mydiv.getBoundingClientRect().top<0){
+        _mydiv.style.top=5 + "px";
+    }
+
+
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        /* if present, the header is where you move the DIV from:*/
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+      } else {
+        /* otherwise, move the DIV from anywhere inside the DIV:*/
+        elmnt.onmousedown = dragMouseDown;
+      }
+    
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+    
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+        //save pos to localStorage
+        localStorage.setItem("posleft", (elmnt.offsetLeft - pos1) + "px");
+        localStorage.setItem("postop", (elmnt.offsetTop - pos2) + "px");
+      }
+    
+      function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+    </script>
+
+
+
     </body>
 </html>
