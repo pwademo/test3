@@ -8,14 +8,23 @@
 
         <div id="mydiv" style="border: solid 1px #111; position: absolute; ">
             <div>
-               
+                     
+                    <!-- Colors:    -->                 
                     {% for setting in site.data.settings %}
                     <div class="inputcolorcontainer">
                         <label for="{{setting.key}}">{{setting.key}}</label>
                         <input  type="color" id="{{setting.key}}" oninput="changeColor('{{setting.key}}')">
                     </div>  
                     {% endfor %}
-                
+
+                    <div class="inputcolorcontainer">
+                      <label for="usefooter">use footer</label>
+                      <input type="checkbox" name="usefooter" id="usefooter">
+                    </div>  
+                    <div class="inputcolorcontainer">
+                      <label for="usecollapsiblemenu">use collapsible menu</label>
+                      <input type="checkbox" name="usecollapsiblemenu" id="usecollapsiblemenu">
+                    </div>  
             </div>
         </div>
 

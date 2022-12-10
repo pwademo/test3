@@ -11,13 +11,15 @@
 #mydiv {
   position: absolute;
   width: 250px;
-  height: 400px;
-  background-color: blue ;
+  height:350px;
+  background-color: #ccc ;
   touch-action: none;
   user-select: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;   
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
 }
 #mydiv>div{
   box-sizing: border-box;
@@ -26,36 +28,38 @@
   width: 100%;
   cursor: default;      
   background-color: blanchedalmond;
+  border-radius:0px 0px 8px 8px;
+  border-top: solid 1px black;
+
+  
 }
 #mydiv:active {
-  background-color: red;
+  background-color: #aaa;
 }
 #mydiv:hover {
   cursor: move;
- /*  background-color: aqua; */
 }
 
-#mydivheader {
-  padding: 10px;
-  cursor: move;
-  z-index: 10;
-  background-color: #2196F3;
-  color: #fff;
-}
-
- .inputcolorcontainer {
+.inputcolorcontainer {
     display:flex;
     align-items: center;
     justify-content:space-between;
+    padding-left: 2px;
+    border-radius:3px;
  } 
+ .inputcolorcontainer:hover {
+  background-color: #cccccc;  
+ }
 
-label { 
-    color:black;
+
+
+ #mydiv>div label { 
+    color:#666666;
     cursor: pointer;
 }
-
-
-
+#mydiv>div label:hover{
+  color:#000000;
+}
 
 input[type=color] {
   -webkit-appearance: none;
@@ -67,6 +71,7 @@ input[type=color] {
   border: none;
   cursor: pointer;
 }
+
 
 input[type=color]::-webkit-color-swatch {
   border-radius: 5px;
