@@ -7,9 +7,9 @@
         {% include template/header.html %}
 
         <div id="mydiv" style="border: solid 1px #111; position: absolute; ">
-            <div>
-                     
-                    <!-- Colors:    -->                 
+                <span id="draghandel" style="border:solid red 1px; width:100%;height:50px;background-color: rgb(205, 237, 140);">header</span>
+
+<!--             <div> 
                     {% for setting in site.data.settings %}
                     <div class="inputcolorcontainer">
                         <label for="{{setting.key}}">{{setting.key}}</label>
@@ -25,7 +25,7 @@
                       <label for="usecollapsiblemenu">use collapsible menu</label>
                       <input type="checkbox" name="usecollapsiblemenu" id="usecollapsiblemenu">
                     </div>  
-            </div>
+            </div> -->
         </div>
 
 
@@ -79,182 +79,123 @@
         </script>
 
 
+        <script>
+                      function setposition(){
+                        //set initial position
+                        //if(!(localStorage["posleft"] && localStorage["postop"])) ;
 
-<script>
-    var dragItem = document.querySelector("#mydiv");
-    console.log("dragItem",dragItem);
-   // var container = document.querySelector("#container");
-    var container = document.querySelector("body");
+                        dragItem.style.left=localStorage["posleft"]; 
+                        dragItem.style.top=localStorage["postop"];  
 
-    var active = false;
-    var currentX;
-    var currentY;
-    var initialX;
-    var initialY;
-    var xOffset = 0;
-    var yOffset = 0;
+                        //awoid moving outside the screen
+                        if(dragItem.getBoundingClientRect().x +dragItem.clientWidth>window.innerWidth-20){      
+                          let _posleft=window.innerWidth-dragItem.clientWidth-20;
+                          dragItem.style.left=_posleft + "px";
+                          localStorage.setItem("posleft", _posleft + "px");
+                        }
+                        if(dragItem.getBoundingClientRect().top +dragItem.clientHeight>window.innerHeight-20){
+                            let _postop=window.innerHeight-dragItem.clientHeight-20;
+                            dragItem.style.top=_postop + "px";
+                            localStorage.setItem("postop", _postop + "px");
+                        }
+                        if(dragItem.getBoundingClientRect().x<0){
+                          dragItem.style.left=5 + "px";
+                        }
+                        if(dragItem.getBoundingClientRect().top<0){
+                          dragItem.style.top=5 + "px";
+                        }  
 
-    container.addEventListener("touchstart", dragStart, false);
-    container.addEventListener("touchend", dragEnd, false);
-    container.addEventListener("touchmove", drag, false);
-
-    container.addEventListener("mousedown", dragStart, false);
-    container.addEventListener("mouseup", dragEnd, false);
-    container.addEventListener("mousemove", drag, false);
-
-    function setposition(){
-        //set initial position
-        //if(!(localStorage["posleft"] && localStorage["postop"])) ;
-
-         dragItem.style.left=localStorage["posleft"]; 
-         dragItem.style.top=localStorage["postop"]; 
-        
-        
-
-        //awoid moving outside the screen
-         if(dragItem.getBoundingClientRect().x +dragItem.clientWidth>window.innerWidth-20){      
-          let _posleft=window.innerWidth-dragItem.clientWidth-20;
-          dragItem.style.left=_posleft + "px";
-          localStorage.setItem("posleft", _posleft + "px");
-        }
-        if(dragItem.getBoundingClientRect().top +dragItem.clientHeight>window.innerHeight-20){
-            let _postop=window.innerHeight-dragItem.clientHeight-20;
-            dragItem.style.top=_postop + "px";
-            localStorage.setItem("postop", _postop + "px");
-        }
-        if(dragItem.getBoundingClientRect().x<0){
-          dragItem.style.left=5 + "px";
-        }
-        if(dragItem.getBoundingClientRect().top<0){
-          dragItem.style.top=5 + "px";
-        }  
-
-    }
-    setposition();
-
-
-
-    function dragStart(e) {
-      console.log("wwwwwwwwwwwwwwww");
-      if (e.type === "touchstart") {
-        initialX = e.touches[0].clientX - xOffset;
-        initialY = e.touches[0].clientY - yOffset;
-      } else {
-        initialX = e.clientX - xOffset;
-        initialY = e.clientY - yOffset;
-      }
-      if (e.target === dragItem) {
-        active = true;
-      }
-    }
-
-
-
-    function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
-      //save pos to localStorage
-/*       localStorage.setItem("posleft",Math.floor(dragItem.getBoundingClientRect().left) + "px");
-      localStorage.setItem("postop", Math.floor(dragItem.getBoundingClientRect().top) + "px"); */
-      localStorage.setItem("posleft",(dragItem.getBoundingClientRect().left) + "px");
-      localStorage.setItem("postop", (dragItem.getBoundingClientRect().top) + "px");
-      active = false;
-    }
-
-    function drag(e) {
-      if (active) {
-      
-        e.preventDefault();
-      
-        if (e.type === "touchmove") {
-          currentX = e.touches[0].clientX - initialX;
-          currentY = e.touches[0].clientY - initialY;
-        } else {
-          currentX = e.clientX - initialX;
-          currentY = e.clientY - initialY;
-        }
-
-        xOffset = currentX;
-        yOffset = currentY;
-
-        setTranslate(currentX, currentY, dragItem);
-      }
-    }
-
-    function setTranslate(xPos, yPos, el) {
-      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-    }
-  </script>
-
-
-
-
-
-
-<!-- 
-
+                    }
+        </script>
         <script>
             
-            const _mydiv=document.getElementById("mydiv");
-            dragElement(_mydiv);
-            _mydiv.style.left=localStorage["posleft"]; 
-            _mydiv.style.top=localStorage["postop"];             
-            if(_mydiv.getBoundingClientRect().x +_mydiv.clientWidth>window.innerWidth-20){
-                let _posleft=window.innerWidth-_mydiv.clientWidth-20;
-                _mydiv.style.left=_posleft + "px";
-                localStorage.setItem("posleft", _posleft + "px");
+
+            
+            var dragItem = document.querySelector("#mydiv");
+            var dragItemHandel = document.querySelector("#draghandel");           
+            var container = document.querySelector("body");
+
+            var active = false;
+            var currentX;
+            var currentY;
+            var initialX;
+            var initialY;
+            var xOffset = 0;
+            var yOffset = 0;
+
+
+            //eventlisteners sættes til body
+            container.addEventListener("touchstart", dragStart, false);
+            container.addEventListener("touchend", dragEnd, false);
+            container.addEventListener("touchmove", drag, false);
+
+            container.addEventListener("mousedown", dragStart, false);
+            container.addEventListener("mouseup", dragEnd, false);
+            container.addEventListener("mousemove", drag, false);
+
+
+            setposition();
+
+
+
+            function dragStart(e) {
+              
+              if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+              } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+              }
+              if (e.target === dragItemHandel) {
+                active = true;
+              }
+/*               if (e.target === dragItem) {
+                active = true;
+              } */
             }
-            if(_mydiv.getBoundingClientRect().top +_mydiv.clientHeight>window.innerHeight-20){
-                let _postop=window.innerHeight-_mydiv.clientHeight-20;
-                _mydiv.style.top=_postop + "px";
-                localStorage.setItem("postop", _postop + "px");
+
+            function dragEnd(e) {
+              initialX = currentX;
+              initialY = currentY;
+              localStorage.setItem("posleft",(dragItem.getBoundingClientRect().left) + "px");
+              localStorage.setItem("postop", (dragItem.getBoundingClientRect().top) + "px");
+              active = false;
             }
-            if(_mydiv.getBoundingClientRect().x<0){
-                _mydiv.style.left=5 + "px";
+
+            function drag(e) {
+              if (active) {
+              
+                e.preventDefault();
+              
+                if (e.type === "touchmove") {
+                  currentX = e.touches[0].clientX - initialX;
+                  currentY = e.touches[0].clientY - initialY;
+                } else {
+                  currentX = e.clientX - initialX;
+                  currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, dragItem);
+              }
             }
-            if(_mydiv.getBoundingClientRect().top<0){
-                _mydiv.style.top=5 + "px";
+
+            function setTranslate(xPos, yPos, el) {
+              el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
             }
 
 
-            function dragElement(elmnt) {
-                    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                    if (document.getElementById(elmnt.id + "header")) {
-                        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                    } else {
-                        elmnt.onmousedown = dragMouseDown;
-                    }
-                    
-                    function dragMouseDown(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        document.onmouseup = closeDragElement;
-                        document.onmousemove = elementDrag;
-                    }
-                    
-                    function elementDrag(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos1 = pos3 - e.clientX;
-                        pos2 = pos4 - e.clientY;
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
 
-                        localStorage.setItem("posleft", (elmnt.offsetLeft - pos1) + "px");
-                        localStorage.setItem("postop", (elmnt.offsetTop - pos2) + "px");
-                    }
-                    
-                    function closeDragElement() {
-                        document.onmouseup = null;
-                        document.onmousemove = null;
-                    }
-            }
-        </script>
- -->
+
+
+
+
+
+          </script>
+
 
 
     </body>

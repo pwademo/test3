@@ -5,30 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .custom-cm {
+
+
+        #sitesetting_menu {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: x-small;
             background-color: #ffffff;
             border: 1px solid #cccccc;
             box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
             display: none;
-            padding: 10px 0;
+            padding: 5px 0;
             position: absolute;
             top: 0;
             left: 0;
-            width: 200px;
+            width: 250px;
+            border-radius: 3px;
         }
 
-        .custom-cm__item {
+        .sitesetting_menu__item {
             cursor: pointer;
-            padding: 8px 15px;
+            height: 24px;
+            padding: 0px 15px; 
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+             
         }
 
-        .custom-cm__item:hover {
+        .sitesetting_menu__item input[type=color] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sitesetting_menu__item input[type=color]::-webkit-color-swatch {
+            border-radius: 5px;
+            border: none;
+            padding-top: 3px;
+        }
+
+        .sitesetting_menu__item  input[type=color]::-moz-color-swatch {
+            border-radius: 10px;
+            border: none;
+        }
+
+        .sitesetting_menu__item:hover {
             background-color: #f8f8f8;
         }
 
-        .custom-cm__divider {
+        .sitesetting_menu__divider {
             border-bottom: 1px solid #eeeeee;
-            margin: 10px 0;
+            margin: 4px 0;
         }
 
     </style>
@@ -36,44 +68,50 @@
 </head>
 <body>
     <h1>Context menu</h1>
-    <div class="custom-cm">
-        <div class="custom-cm__item">Item #1</div>
-        <div class="custom-cm__item">Item #2</div>
-        <div class="custom-cm__item">Item #3</div>
-        <div class="custom-cm__divider"></div>
-        <div class="custom-cm__item">Item #4</div>
+    <div id="sitesetting_menu">
+        <div class="sitesetting_menu__item">Gem som</div>        
+        <div class="sitesetting_menu__divider"></div>
+        <div class="sitesetting_menu__item">
+           <label for="font-color">Font-color</label><input type="color" name="font-color" id="font-color">
+        </div>        
+        <div class="sitesetting_menu__item">
+            <label for="font-color">Font-color</label><input type="color" name="font-color" id="font-color">
+        </div>
+        <div class="sitesetting_menu__divider"></div>
+        <div class="sitesetting_menu__item">
+            <label for="usefooter">use footer</label>
+            <input type="checkbox" name="usefooter" id="usefooter">
+          </div>  
+        <div class="sitesetting_menu__item">
+            <label for="usecollapsiblemenu">use collapsible menu</label>
+            <input type="checkbox" name="usecollapsiblemenu" id="usecollapsiblemenu">
+        </div>  
+        <div class="sitesetting_menu__divider"></div>
+        <div class="sitesetting_menu__item">Opret JSON-fil</div>
     </div>
     <script>
-        const cm = document.querySelector(".custom-cm");
+        const ssmenu = document.querySelector("#sitesetting_menu");
 
         function showContextMenu(show=true) {
-            console.log("show",show);
-            console.log("cm",cm);
-            if(show){
-                cm.style.display="block";
-            }
-            else {
-                cm.style.display="none";
-            }
-            //cm.style.display = show? "block" : "none";
+            ssmenu.style.display = show? "block" : "none";
         }
 
         window.addEventListener("contextmenu", e => {            
             e.preventDefault();
 
             showContextMenu();
-            cm.style.top =
-                e.y + cm.offsetHeight > window.innerHeight
-                ? window.innerHeight - cm.offsetHeight
+            ssmenu.style.top =
+                e.y + ssmenu.offsetHeight > window.innerHeight
+                ? window.innerHeight - ssmenu.offsetHeight
                 : e.y;
-            cm.style.left =
-                e.x + cm.offsetWidth > window.innerWidth
-                ? window.innerWidth - cm.offsetWidth
+                ssmenu.style.left =
+                e.x + ssmenu.offsetWidth > window.innerWidth
+                ? window.innerWidth - ssmenu.offsetWidth
                 : e.x;
             });
 
-            window.addEventListener("click", () => {
-            showContextMenu(false);
+        window.addEventListener("click", () => {
+            //showContextMenu(false);
         });
 
     </script>
