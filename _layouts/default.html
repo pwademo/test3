@@ -6,25 +6,34 @@
     <body>
         {% include template/header.html %}
 
-        <div id="mydiv" style="border: solid 1px #111; position: absolute; ">
-                <span id="draghandel" style="border:solid red 1px; width:100%;height:50px;background-color: rgb(205, 237, 140);">header</span>
+        <div id="sitesetting_menu" style="border: solid 1px #111; position: absolute; ">
+                        <span id="sitesetting_menu__header">Settings</span>
 
-                <div> 
+                        <div> 
+
+
                         {% for setting in site.data.settings %}
-                        <div class="inputcolorcontainer">
+                        <div class="sitesetting_menu__item">
                             <label for="{{setting.key}}">{{setting.key}}</label>
                             <input  type="color" id="{{setting.key}}" oninput="changeColor('{{setting.key}}')">
                         </div>  
                         {% endfor %}
 
-                        <div class="inputcolorcontainer">
-                          <label for="usefooter">use footer</label>
+                        <div class="sitesetting_menu__divider"></div>
+
+                        <div class="sitesetting_menu__item">
+                          <label for="usefooter">Use page footer</label>
                           <input type="checkbox" name="usefooter" id="usefooter">
                         </div>  
-                        <div class="inputcolorcontainer">
-                          <label for="usecollapsiblemenu">use collapsible menu</label>
+                        <div class="sitesetting_menu__item">
+                          <label for="usecollapsiblemenu">Use 'hamburger' menu</label>
                           <input type="checkbox" name="usecollapsiblemenu" id="usecollapsiblemenu">
-                        </div>  
+                        </div>                          
+
+                        <div class="sitesetting_menu__divider"></div>
+                        <div class="sitesetting_menu__item">Opret JSON-fil</div>
+
+
                 </div>
         </div>
 
@@ -111,8 +120,8 @@
             
 
             
-            var dragItem = document.querySelector("#mydiv");
-            var dragItemHandel = document.querySelector("#draghandel");           
+            var dragItem = document.querySelector("#sitesetting_menu");
+            var dragItemHandel = document.querySelector("#sitesetting_menu__header");           
             var container = document.querySelector("body");
 
             var active = false;

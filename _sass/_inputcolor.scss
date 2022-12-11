@@ -1,13 +1,85 @@
 
 
-/* #mydiv {
-  position: absolute;
-  z-index: 9;
-  background-color: #f1f1f1;
-  border: 1px solid #d3d3d3;
-  padding: 5px;
-  width:300px
-} */
+    #sitesetting_menu {
+        top: 20;
+        left: 20;            
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+        display: block;
+        padding: 0px 0;
+        position: absolute;
+        width: 250px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        touch-action: none;
+        user-select: none;
+    }
+    #sitesetting_menu__header {
+        cursor: move;
+        height: 34px;
+        padding: 0px 15px; 
+        margin-bottom: 5px;;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        background-color: #ddd;
+        font-weight: bold;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;    
+    }
+    .sitesetting_menu__item {
+        cursor: pointer;
+        height: 24px;
+        padding: 0px 15px; 
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+         
+    }
+
+    .sitesetting_menu__item label {
+        display: flex;
+        align-items: center;
+        height: 25px; 
+        width:100%;
+        cursor: pointer;            
+    }
+
+    .sitesetting_menu__item input[type=color] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .sitesetting_menu__item input[type=color]::-webkit-color-swatch {
+        border-radius: 5px;
+        border: none;
+        padding-top: 3px;
+    }
+
+    .sitesetting_menu__item input[type=color]::-moz-color-swatch {
+        border-radius: 10px;
+        border: none;
+    }
+
+    .sitesetting_menu__item:hover {
+        background-color: #f8f8f8;
+    }
+
+    .sitesetting_menu__divider {
+        border-bottom: 1px solid #eeeeee;
+        margin: 4px 0;
+    }
+
+
 #mydiv {
   position: absolute;
   width: 250px;
