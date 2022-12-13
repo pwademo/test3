@@ -6,7 +6,7 @@
     <body>
         {% include template/header.html %}
 
-        <div id="sitesetting_menu" style="border: solid 1px #111; position: absolute; ">
+        <div id="sitesetting_menu" style="border: solid 1px #111; position: absolute; color: black; ">
                         <span id="sitesetting_menu__header">Settings</span>
 
                         <div> 
@@ -31,7 +31,8 @@
                         </div>                          
 
                         <div class="sitesetting_menu__divider"></div>
-                        <div class="sitesetting_menu__item">Opret JSON-fil</div>
+                        <div class="sitesetting_menu__item" onclick="ReadFromLocalstorage()">Save JSON-fil</div>
+                        <div class="sitesetting_menu__item" onclick="clearLocalStorage()">Reset settings</div>                        
 
 
                 </div>
@@ -51,8 +52,35 @@
         {% include template/foot.html %}
 
 
+        <script>
+            //hent settings fra _data. De indsættes som const myDefaultSettings
+            //herfra kan de anvedes på siden
+            const myDefaultSettings = 
+                [
+                  {% for setting in site.data.settings %}
+                    {         
+                        'key': '{{ setting.key }}',
+                        'value':'{{ setting.value }}'
+                    },
+                  {% endfor %}
+                ]
 
-        <script>          
+
+            let newData=myDefaultSettings.map((setting)=>{
+                  console.log(setting.key);
+                  console.log("valueform_server",setting.value);
+                  console.log("valueform_localstorage",localStorage.getItem(setting.key));
+                  console.log("===xxxxxxxxxxxxxxxxx==============")
+            });
+             
+         
+            function clearLocalStorage(){
+              if (confirm("Are You sure you want to reset to default settings?") == true) {
+                initAllToDefault();
+                location.reload();                
+              }
+            }
+
             function changeColor(thisid) { 
                 console.log(thisid);
                 const userColor = document.getElementById(thisid).value;
@@ -73,53 +101,123 @@
                     document.documentElement.style.setProperty("--" + thisid, _localStoreValue);
                     document.getElementById(thisid).value = _localStoreValue;  
                 }            
-            else {                    
-                    const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue("--" + thisid);                    
+                else {                    
+                    const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue("--" + thisid);    
+                    //console.log(_colorfromcss);                
                     localStorage.setItem(thisid, _colorfromcss.trim());
                     document.getElementById(thisid).value = _colorfromcss.trim();  
                 } 
             }
-            {% for setting in site.data.settings %}
-                initColor("{{setting.key}}");  
-            {% endfor %}
 
+            function initAll(){
+                myDefaultSettings.map((setting)=>{
+                      initColor(setting.key);  
+                });
+            }
+
+            //Sætter alle instillinger til den værdi de har i setting.csv
+            function initAllToDefault(){
+                myDefaultSettings.map((setting)=>{
+                  localStorage.setItem(setting.key,setting.value);                    
+                });
+            }
+
+            function toCSV(inputArray, separator = ",") {
+                   console.log(inputArray);
+                  let rowsAsString = inputArray.map(row => {
+                    return rowsAsString.join(separator);
+                  });
+                  console.log(rowsAsString);
+                  //return csvFormat = rowsAsString.join("\n");
+            }
+
+            function ReadFromLocalstorage(){
+/*               const data = [
+                    ["John", "Liverpool", "Guitar"],
+                    ["Ringo", "Liverpool", "Percussion"],
+                    ["Paul", "Liverpool", "Bass"],
+                    ["George", "Liverpool", "Guitar"],
+                ];
+                let rowsAsString = data.map(row => {
+                    return row.join(",");
+                }) */
+
+                let neyJSON=myDefaultSettings.map((setting)=>{
+                    setting.value=localStorage.getItem(setting.key);
+                    return setting;
+
+                });
+
+
+                downloadJson("settings.json",neyJSON);
+
+
+            } 
+
+
+          function downloadJson(filename, JsonData) {
+            let jsonString=JSON.stringify(JsonData,null,3);
+            let fileType = 'application/json';
+            let blob = new Blob([jsonString], { type: fileType });
+
+            const element = document.createElement("a");
+
+            element.setAttribute("href", window.URL.createObjectURL(blob));
+            element.setAttribute("download", filename);
+            element.style.display = "none";
+
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+          }
+
+          function downloadCsv(filename, CsvData) {
+            const element = document.createElement("a");
+
+            element.setAttribute("href", `data:text/csv;charset=utf-8,${CsvData}`);
+            element.setAttribute("download", filename);
+            element.style.display = "none";
+
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+          }
+
+          initAll();
 
 
         </script>
 
 
         <script>
-                      function setposition(){
-                        //set initial position
-                        //if(!(localStorage["posleft"] && localStorage["postop"])) ;
+          function setposition(){
+            //set initial position
+            //if(!(localStorage["posleft"] && localStorage["postop"])) ;
 
-                        dragItem.style.left=localStorage["posleft"]; 
-                        dragItem.style.top=localStorage["postop"];  
+            dragItem.style.left=localStorage["posleft"]; 
+            dragItem.style.top=localStorage["postop"];  
 
-                        //awoid moving outside the screen
-                        if(dragItem.getBoundingClientRect().x +dragItem.clientWidth>window.innerWidth-20){      
-                          let _posleft=window.innerWidth-dragItem.clientWidth-20;
-                          dragItem.style.left=_posleft + "px";
-                          localStorage.setItem("posleft", _posleft + "px");
-                        }
-                        if(dragItem.getBoundingClientRect().top +dragItem.clientHeight>window.innerHeight-20){
-                            let _postop=window.innerHeight-dragItem.clientHeight-20;
-                            dragItem.style.top=_postop + "px";
-                            localStorage.setItem("postop", _postop + "px");
-                        }
-                        if(dragItem.getBoundingClientRect().x<0){
-                          dragItem.style.left=5 + "px";
-                        }
-                        if(dragItem.getBoundingClientRect().top<0){
-                          dragItem.style.top=5 + "px";
-                        }  
+            //awoid moving outside the screen
+            if(dragItem.getBoundingClientRect().x +dragItem.clientWidth>window.innerWidth-20){      
+              let _posleft=window.innerWidth-dragItem.clientWidth-20;
+              dragItem.style.left=_posleft + "px";
+              localStorage.setItem("posleft", _posleft + "px");
+            }
+            if(dragItem.getBoundingClientRect().top +dragItem.clientHeight>window.innerHeight-20){
+                let _postop=window.innerHeight-dragItem.clientHeight-20;
+                dragItem.style.top=_postop + "px";
+                localStorage.setItem("postop", _postop + "px");
+            }
+            if(dragItem.getBoundingClientRect().x<0){
+              dragItem.style.left=5 + "px";
+            }
+            if(dragItem.getBoundingClientRect().top<0){
+              dragItem.style.top=5 + "px";
+            }  
 
-                    }
+        }
         </script>
-        <script>
-            
-
-            
+        <script>     
             var dragItem = document.querySelector("#sitesetting_menu");
             var dragItemHandel = document.querySelector("#sitesetting_menu__header");           
             var container = document.querySelector("body");
@@ -195,14 +293,6 @@
             function setTranslate(xPos, yPos, el) {
               el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
             }
-
-
-
-
-
-
-
-
           </script>
 
 

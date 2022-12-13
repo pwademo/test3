@@ -2,7 +2,6 @@
 <script>
 
 function displayImages(data,isforsale=false,categories=[]){
-        //console.log("Categories",categories);
         document.querySelector(".grid-container").innerHTML=data
             .filter((data)=>{               
                 if(categories.length>0 && isforsale){

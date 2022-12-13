@@ -1,0 +1,38 @@
+[
+   {
+      "key": "background-color",
+      "value": "#eee8e8"
+   },
+   {
+      "key": "background-color-header",
+      "value": "#90a0f4"
+   },
+   {
+      "key": "background-color-footer",
+      "value": "#396179"
+   },
+   {
+      "key": "font-color",
+      "value": "#000000"
+   },
+   {
+      "key": "font-color-menu",
+      "value": "#c0c0c0"
+   },
+   {
+      "key": "font-color-menuactive",
+      "value": "#222222"
+   },
+   {
+      "key": "font-color-menuhover",
+      "value": "#008000"
+   },
+   {
+      "key": "font-color-mailaddress",
+      "value": "#0d6efd"
+   },
+   {
+      "key": "font-color-menufirst",
+      "value": "#3e29db"
+   }
+]
