@@ -34,5 +34,25 @@
    {
       "key": "font-color-menufirst",
       "value": "#3e29db"
+   },
+   {
+      "key": "border-color-header",
+      "value": "#000000"
+   },
+   {
+      "key": "border-color-footer",
+      "value": "#000000"
+   },
+   {
+      "key": "border-width-header",
+      "value": "2px"
+   },   
+   {
+      "key": "border-width-footer",
+      "value": "2px"
+   },   
+   {
+      "key": "font-family",
+      "value": "Garamond, serif"
    }
 ]

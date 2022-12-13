@@ -4,16 +4,20 @@
     flex: 0;
     padding-top: 4%;
     background-color: var(--background-color-header);
-    border-bottom:solid 1px black; 
+    border-bottom-style: solid;     
+    border-bottom-color: var(--border-color-header);
+    border-bottom-width: var(--border-width-header);
+
   }
   footer {
     /*How to stick footer to bottom of page if not enough content*/
     flex: 0;
     padding-top: 1em;
     padding-bottom:  1em;
-    background-color: var(--background-color-footer);
-    border-top:solid 1px black; 
-
+    background-color: var(--background-color-footer);   
+    border-top-style: solid;     
+    border-top-color: var(--border-color-footer);
+    border-top-width: var(--border-width-footer);
   }
   footer>div {
      width: 90vw; 

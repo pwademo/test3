@@ -11,8 +11,8 @@
 
                         <div> 
 
-
-                        {% for setting in site.data.settings %}
+                        {% assign colorsettings=site.data.settings | where_exp:"settings", "settings.key contains 'color'" %}
+                        {% for setting in colorsettings %}
                         <div class="sitesetting_menu__item">
                             <label for="{{setting.key}}">{{setting.key}}</label>
                             <input  type="color" id="{{setting.key}}" oninput="changeColor('{{setting.key}}')">
@@ -22,6 +22,21 @@
                         <div class="sitesetting_menu__divider"></div>
 
                         <div class="sitesetting_menu__item">
+                          <label for="font-family">font-family</label>
+                          <select name="font-family" id="font-family" onchange="changeFontFamily('font-family')">
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="Verdana, sans-serif">Verdana</option>         
+                            <option value="Tahoma, sans-serif">Tahoma</option>         
+                            <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>         
+                            <option value="'Times New Roman', serif">Times New Roman</option>                            
+                            <option value="Georgia, serif" >Georgia</option>                            
+                            <option value="Garamond, serif">Garamond</option>                            
+                            <option value="'Courier New', monospace">Courier New</option>
+                          </select>
+                        </div>
+
+                        <div class="sitesetting_menu__divider"></div>
+                        <div class="sitesetting_menu__item">
                           <label for="usefooter">Use page footer</label>
                           <input type="checkbox" name="usefooter" id="usefooter">
                         </div>  
@@ -30,8 +45,9 @@
                           <input type="checkbox" name="usecollapsiblemenu" id="usecollapsiblemenu">
                         </div>                          
 
+                          
                         <div class="sitesetting_menu__divider"></div>
-                        <div class="sitesetting_menu__item" onclick="ReadFromLocalstorage()">Save JSON-fil</div>
+                        <div class="sitesetting_menu__item" onclick="saveAsJson()">Save JSON-fil</div>
                         <div class="sitesetting_menu__item" onclick="clearLocalStorage()">Reset settings</div>                        
 
 
@@ -66,12 +82,7 @@
                 ]
 
 
-            let newData=myDefaultSettings.map((setting)=>{
-                  console.log(setting.key);
-                  console.log("valueform_server",setting.value);
-                  console.log("valueform_localstorage",localStorage.getItem(setting.key));
-                  console.log("===xxxxxxxxxxxxxxxxx==============")
-            });
+
              
          
             function clearLocalStorage(){
@@ -82,10 +93,16 @@
             }
 
             function changeColor(thisid) { 
-                console.log(thisid);
+                //console.log(thisid);
                 const userColor = document.getElementById(thisid).value;
                 document.documentElement.style.setProperty("--" + thisid, userColor);
                 localStorage.setItem(thisid, userColor);
+            }
+
+            function changeFontFamily(thisid){
+              const selectedvalue = document.getElementById(thisid).value;
+              document.documentElement.style.setProperty("--" + thisid, selectedvalue);
+              localStorage.setItem(thisid, selectedvalue);
             }
 
             function changeColorOld(thisid,cssvarname) { 
@@ -95,15 +112,20 @@
             }
 
           
-            function initColor(thisid){
+            function init(thisid){
                 if(localStorage[thisid]) {
                     const _localStoreValue=localStorage[thisid];
                     document.documentElement.style.setProperty("--" + thisid, _localStoreValue);
-                    document.getElementById(thisid).value = _localStoreValue;  
+                    if(thisid.includes("color")){
+                      document.getElementById(thisid).value = _localStoreValue;
+                    } 
+                    else if(thisid=="font-family"){
+                      let _option=document.querySelector(`[value="${_localStoreValue}"]`);
+                      _option.setAttribute("selected",true);
+                    }
                 }            
                 else {                    
-                    const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue("--" + thisid);    
-                    //console.log(_colorfromcss);                
+                    const _colorfromcss=getComputedStyle(document.documentElement).getPropertyValue("--" + thisid);         
                     localStorage.setItem(thisid, _colorfromcss.trim());
                     document.getElementById(thisid).value = _colorfromcss.trim();  
                 } 
@@ -111,7 +133,7 @@
 
             function initAll(){
                 myDefaultSettings.map((setting)=>{
-                      initColor(setting.key);  
+                      init(setting.key);  
                 });
             }
 
@@ -123,7 +145,7 @@
             }
 
             function toCSV(inputArray, separator = ",") {
-                   console.log(inputArray);
+                  // console.log(inputArray);
                   let rowsAsString = inputArray.map(row => {
                     return rowsAsString.join(separator);
                   });
@@ -131,27 +153,13 @@
                   //return csvFormat = rowsAsString.join("\n");
             }
 
-            function ReadFromLocalstorage(){
-/*               const data = [
-                    ["John", "Liverpool", "Guitar"],
-                    ["Ringo", "Liverpool", "Percussion"],
-                    ["Paul", "Liverpool", "Bass"],
-                    ["George", "Liverpool", "Guitar"],
-                ];
-                let rowsAsString = data.map(row => {
-                    return row.join(",");
-                }) */
-
+            function saveAsJson(){
                 let neyJSON=myDefaultSettings.map((setting)=>{
                     setting.value=localStorage.getItem(setting.key);
                     return setting;
 
                 });
-
-
                 downloadJson("settings.json",neyJSON);
-
-
             } 
 
 
