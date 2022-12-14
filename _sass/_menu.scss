@@ -79,8 +79,8 @@
   }
 
   .navbar .menu a:nth-child(1)  { 
-    color:var(--font-color-menufirst);    
-    font-size: 40px;    
+    color:var(--font-color-sitename);    
+    font-size: var(--font-size-sitename);    
     width: 100%;        /*Så den fylder helle rækken*/
    /*  border:red solid 1px; */
   } 

@@ -27,13 +27,26 @@
                             <option value="Arial, sans-serif">Arial</option>
                             <option value="Verdana, sans-serif">Verdana</option>         
                             <option value="Tahoma, sans-serif">Tahoma</option>         
-                            <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>         
-                            <option value="'Times New Roman', serif">Times New Roman</option>                            
+                            <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>         
+                            <option value="Times New Roman, serif">Times New Roman</option>                            
                             <option value="Georgia, serif" >Georgia</option>                            
                             <option value="Garamond, serif">Garamond</option>                            
-                            <option value="'Courier New', monospace">Courier New</option>
+                            <option value="Courier New, monospace">Courier New</option>
                           </select>
                         </div>
+
+                        <div class="sitesetting_menu__item">
+                          <label for="border-width-header">border-width-header</label>
+                          <input style="width: 80px" type="range" value="2" min="0" max="12" onchange="changeWidth('border-width-header')" name="border-width-header" id="border-width-header">
+                        </div>  
+                        <div class="sitesetting_menu__item">
+                          <label for="border-width-footer">border-width-footer</label>
+                          <input style="width: 80px" type="range" value="2" min="0" max="12" onchange="changeWidth('border-width-footer')" name="border-width-footer" id="border-width-footer">
+                        </div>  
+                        <div class="sitesetting_menu__item">
+                          <label for="font-size-sitename">font-size-sitename</label>
+                          <input style="width: 80px" type="range" value="2" min="16" max="80" onchange="changeWidth('font-size-sitename')" name="font-size-sitename" id="font-size-sitename">
+                        </div>  
 
                         <div class="sitesetting_menu__divider"></div>
                         <div class="sitesetting_menu__item">
@@ -105,6 +118,12 @@
               localStorage.setItem(thisid, selectedvalue);
             }
 
+            function changeWidth(thisid){
+              const selectedvalue = document.getElementById(thisid).value;
+              document.documentElement.style.setProperty("--" + thisid, selectedvalue + "px");
+              localStorage.setItem(thisid, selectedvalue + "px");
+            }
+
             function changeColorOld(thisid,cssvarname) { 
                 const userColor = document.getElementById(thisid).value;
                 document.documentElement.style.setProperty(cssvarname, userColor);
@@ -121,7 +140,12 @@
                     } 
                     else if(thisid=="font-family"){
                       let _option=document.querySelector(`[value="${_localStoreValue}"]`);
-                      _option.setAttribute("selected",true);
+                      //console.log(_option);
+                      if(_option){_option.setAttribute("selected",true)};
+                    }
+                    else if(thisid.includes("width") || thisid.includes("size")){
+                      //console.log(document.getElementById(thisid));
+                      document.getElementById(thisid).value = _localStoreValue.replace("px", "");
                     }
                 }            
                 else {                    
