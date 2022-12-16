@@ -19,7 +19,26 @@ It will also generate these files:
 - favicon.ico
 - favicon-16x16.png
 - favicon-32x32.png
+
 - mstile-150x150.png
 - safari-pinned-tab.svg
 
 Upload them to this folder
+
+
+https://favicon.io/favicon-generator/
+Does not generate 
+- mstile-150x150.png
+- safari-pinned-tab.svg
+
+
+
+https://www.tricksbysam.com/tools/favicon-generator/
+Does not generate 
+- mstile-150x150.png
+- safari-pinned-tab.svg
+
+
+https://favicon.one/
+
+
