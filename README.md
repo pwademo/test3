@@ -1,11 +1,11 @@
 # Readme
 
 ## Pages
-Pages is in this directory: [/pages](../main/pages)
+Pages is in this directory: [/pages/](../main/pages)
 
 
 ## Gallery
-All images in this directory: [/gallery](../main/gallery)
+All images in this directory: [/gallery/](../main/gallery)
 
 All meta-data for the images in the gallery is in this file: [/_data/gallery.json](../main/_data/gallery.json)
 
@@ -15,7 +15,7 @@ All meta-data for the images in the gallery is in this file: [/_data/gallery.jso
 
 
 ## Favicons
-All favicons in this directory: [/favicons](../main/favicons)
+All favicons in this directory: [/favicons/](../main/favicons)
 
 
 
