@@ -13,7 +13,13 @@
             "src":"{{ '/favicons/android-chrome-512x512.png' | relative_url }}" ,
             "sizes": "512x512",
             "type": "image/png"
-        }
+        },
+        {
+            "src": "{{ '/favicons/apple-touch-icon.png' | relative_url }}",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+       }
     ],
     "theme_color": "{% assign setting = site.data.settings | where:'key','background-color-header' | first  %}{{ setting.value }}",
     "background_color": "{% assign setting = site.data.settings | where:'key','background-color' | first  %}{{ setting.value }}",
