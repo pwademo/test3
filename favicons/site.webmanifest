@@ -18,7 +18,7 @@
             "src": "{{ '/favicons/apple-touch-icon.png' | relative_url }}",
             "sizes": "180x180",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "maskable"
        }
     ],
     "theme_color": "{% assign setting = site.data.settings | where:'key','background-color-header' | first  %}{{ setting.value }}",
