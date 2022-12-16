@@ -98,7 +98,11 @@
     margin: 6px 0; 
   }
 
-  @media screen and (max-width: 500px) {
+
+
+/*   $use-hamburgermenu-from-width */
+
+  @media screen and (max-width: $use-hamburgermenu-from-width ) {
     .navbar .menu a:not(:first-child)  {
       display: none;
     }

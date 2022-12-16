@@ -13,20 +13,6 @@ year: 2022
 # author: John Doe 
 
 
-#######
-# COLOR SETTINGS
-#
-colors: 
-  background-color: "rgb(213,209,202)"
-  background-color-header: "#396179"  
-  background-color-footer: "#396179"
-  font-color: "#111"
-  font-color-menu: "rgb(91, 90, 90)"
-  font-color-menuactive: "red" 
-  font-color-menuhover: "green"     
-  font-color-mailaddress: "#0d6efd"
-  font-color-menufirst: "black"
-
 
 
 ##########
@@ -51,11 +37,6 @@ source-code: https://github.com/pwademo/workshop-example
 # set noindex to true if you do NOT want Google to index your site
 noindex: true 
 
-##########
-# Use footer [optional!]
-#
-# set usefooter to true if you do not want footer og yout site
-nofooter: false
 
 ##########
 # Social links
@@ -82,4 +63,4 @@ defaults:
       permalink: /:basename:output_ext
 
 # ignore stuff
-exclude: [docs/, Rakefile, README.md, LICENSE]
+exclude: [docs/, Rakefile, README2.md, LICENSE]

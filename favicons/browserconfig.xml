@@ -4,7 +4,7 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/mstile-150x150.png"/>
+            <square150x150logo src="/favicons/mstile-150x150.png"/>
             <TileColor>{% assign setting = site.data.settings | where:"key","background-color-header" | first  %}{{ setting.value }}</TileColor>
         </tile>
     </msapplication>

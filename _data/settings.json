@@ -58,5 +58,9 @@
    {
       "key": "font-family",
       "value": "Arial, serif"
+   },
+   {
+      "key": "nofooter",
+      "value": true
    }
 ]

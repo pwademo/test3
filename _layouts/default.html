@@ -37,15 +37,15 @@
 
                         <div class="sitesetting_menu__item">
                           <label for="border-width-header">border-width-header</label>
-                          <input style="width: 80px" type="range" value="2" min="0" max="12" onchange="changeWidth('border-width-header')" name="border-width-header" id="border-width-header">
+                          <input style="width: 80px" type="range" value="2" min="0" max="12" oninput="changeWidth('border-width-header')" name="border-width-header" id="border-width-header">
                         </div>  
                         <div class="sitesetting_menu__item">
                           <label for="border-width-footer">border-width-footer</label>
-                          <input style="width: 80px" type="range" value="2" min="0" max="12" onchange="changeWidth('border-width-footer')" name="border-width-footer" id="border-width-footer">
+                          <input style="width: 80px" type="range" value="2" min="0" max="12" oninput="changeWidth('border-width-footer')" name="border-width-footer" id="border-width-footer">
                         </div>  
                         <div class="sitesetting_menu__item">
                           <label for="font-size-sitename">font-size-sitename</label>
-                          <input style="width: 80px" type="range" value="2" min="16" max="80" onchange="changeWidth('font-size-sitename')" name="font-size-sitename" id="font-size-sitename">
+                          <input style="width: 80px" type="range" value="2" min="16" max="80" oninput="changeWidth('font-size-sitename')" name="font-size-sitename" id="font-size-sitename">
                         </div>  
 
                         <div class="sitesetting_menu__divider"></div>
@@ -60,7 +60,7 @@
 
                           
                         <div class="sitesetting_menu__divider"></div>
-                        <div class="sitesetting_menu__item" onclick="saveAsJson()">Save JSON-fil</div>
+                        <div class="sitesetting_menu__item" onclick="saveAsJson()">Save settings to settings.json</div>
                         <div class="sitesetting_menu__item" onclick="clearLocalStorage()">Reset settings</div>                        
 
 
@@ -72,7 +72,10 @@
             {{ content }}
         </main>
 
-        {% if site.nofooter!=true %}
+
+        {% assign setting-nofooter = site.data.settings | where:'key','nofooter' | first  %}
+
+        {% if setting-nofooter.value!=true %}
             {% if page.nofooter!=true %}
                 {% include template/footer.html %} 
             {% endif %}

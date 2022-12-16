@@ -11,7 +11,7 @@ hr {
 <script>
     const myJson = 
         [
-          {% for billede in site.data.billeder %}
+          {% for billede in site.data.gallery %}
           {         
               "filename": '{{ billede.filename }}',
               "title":'{{ billede.title }}',

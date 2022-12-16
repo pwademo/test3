@@ -3,27 +3,37 @@
 ---
 @charset "utf-8";
 
+$use-hamburgermenu-from-width: 500px;
 
 :root {
 
-   /*How to stick footer to bottom of page if not enough content*/
-  --doc-height: 100%;
+    //default variables
+    --background-color: #ffffff;
+    --background-color-header:#67729d;
+    --background-color-footer:#396179;
+    --font-color:#000000;
+    --font-color-menu:#e7eaf4;
+    --font-color-menuactive:#222222;
+    --font-color-menuhover:#008000;
+    --font-color-mailaddress:#0d6efd;
+    --font-color-sitename:#b12c3d;
+    --font-size-sitename:20px;
+    --border-color-header:#ac3040;
+    --border-color-footer:#000000;
+    --border-width-header:2px;
+    --border-width-footer:2px;
+    --font-family: Arial, Helvetica, sans-serif;
+
+    //virker kun som en sass var da media ikke kan se root
 
 
 
+  //overriding default variables with data form settings.json
    /*==============start========*/
-
-
-   {% for setting in site.data.settings %}
+  {% for setting in site.data.settings %}
    {{setting.key | prepend:"--" | append:":"}} {{setting.value | append:";"}} 
- {% endfor %}
+  {% endfor %}
    /*==============END========*/
-
-
-  /* get colors from config.yml */
-  $text-color: #111 !default;
-
-
 }
 
 /* Optionally tweak base body text and link color */
@@ -42,8 +52,9 @@ $container-narrow: 700px;
 */
 {% assign btns = site.data.theme-colors | where_exp: "item","item.color != nil" %} 
 {% for btn in btns %}
-${{ btn.color_class }}: {{ btn.color }};
+    ${{ btn.color_class }}: {{ btn.color }};
 {% endfor %}
+
 $theme-colors: () !default;
 $theme-colors: map-merge(
   (
@@ -54,7 +65,8 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
+
 // Import partials.
 @import
-   "template", "custom","gallery","menu","inputcolor"
+   "template", "custom","gallery","menu","sitesettings"
 ;
