@@ -2,6 +2,12 @@
 ---
 # Readme
 
+[relative reference to a LICENSE](../blob/main/LICENSE)
+
+
+
+https://github.com/pwademo/workshop-example/blob/main/LICENSE 
+
 
 {% assign directoryroot = site.source-code | append: "/tree/main" %}
 {% assign fileroot = site.source-code | append: "/blob/main" %}
