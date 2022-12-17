@@ -2,9 +2,7 @@
 <script>
 
 
-
-
-        function displayImages(data,filename){           
+function displayImages(data,filename){           
                 let galleri=document.querySelector(".grid-container");
                 
                 galleri.innerHTML=data
@@ -15,10 +13,10 @@
                         let subtext="";
                         if(item.title) subtext+=`<p>${item.title} </p>`
                         if(item.year) subtext+=`<p>${item.year} </p>`
-                        if(item.dimensions) subtext+=`<p>${item.dimensions} </p>`
+                        /* if(item.dimensions) subtext+=`<p>${item.dimensions} </p>` */
                         if(item.medium) subtext+=`<p>${item.medium} </p>`                
-                        if(item.price) subtext+=`<p><b>${item.price}</b> </p>`
-                        if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>`
+                        /* if(item.price) subtext+=`<p><b>${item.price}</b> </p>` */
+                        /* if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>` */
                         /*  
                         return  `                
                         <img class="billede" id="billede" style="pointer-events:unset;"  src="/workshop-example/gallery/${item.filename.replace(".jpeg","")}-900.jpeg" alt="">
@@ -36,37 +34,9 @@
                     }).join("\n");            
         }
 
-    const params = new URLSearchParams(window.location.hash.substr(1));
-    const filename=params.get("id");
-    displayImages(myJson,filename);
+
+let item=myJson[Math.floor(Math.random() * myJson.length)];
+displayImages(myJson,item.filename);
 
     
-    //
-    let lastPageUrl = document.referrer
-    if(lastPageUrl){
-        let lasturl=new URL(lastPageUrl);
-        
-        if(lasturl.pathname=="/workshop-example/gallery.html"){
-
-            document.querySelector(".grid-container").addEventListener("click",()=>
-            { 
-               /*  window.history.back(); */
-               window.history.go(-1);//Forsøg at få browser til at gå tilbage på samme scroll position
-            });           
-        }
-        else {            
-            document.querySelector(".grid-container").addEventListener("click",()=>
-            { 
-                window.location.pathname = ('/workshop-example/gallery.html')
-            });
-        }
-
-    }
-    else 
-    {
-        document.querySelector(".grid-container").addEventListener("click",()=>
-        { 
-             window.location.pathname = ('/galleri.html')
-        });
-    }
 </script>
