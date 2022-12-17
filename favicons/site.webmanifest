@@ -15,8 +15,8 @@
             "type": "image/png"
         },
         {
-            "src": "{{ '/favicons/apple-touch-icon.png' | relative_url }}",
-            "sizes": "180x180",
+            "src": "{{ '/favicons/android-chrome-512x512.png' | relative_url }}",
+            "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
        }
