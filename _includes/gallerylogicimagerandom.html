@@ -5,7 +5,8 @@
 function displayImages(data,filename){           
                 let galleri=document.querySelector(".grid-container");
                 
-                galleri.innerHTML=data
+                galleri.innerHTML=data  
+                
                     .filter((data)=>{
                         return data.filename===filename && data.hidden!==true
                     })
