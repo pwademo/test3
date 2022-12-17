@@ -42,3 +42,7 @@ Does not generate
 https://favicon.one/
 
 
+
+
+safari-pinned-tab.svg
+is used when users pin a tab on Safari for macOS. Basically, you declare a monochrome SVG and a theme color.
