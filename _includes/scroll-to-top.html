@@ -2,7 +2,7 @@
     // When the user scrolls down from the top of the document, show the button
     window.onscroll = function () {
         if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-            document.getElementById("scroll-to-top").style.display = "block";
+            document.getElementById("scroll-to-top").style.display = "flex";
         } else {
             document.getElementById("scroll-to-top").style.display = "none";
         }
@@ -15,7 +15,7 @@
         });
     }
 </script>
-<button  id="scroll-to-top" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
+<div  id="scroll-to-top" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
     <img src="{{'/assets/icons/chevron-double-up.svg' | relative_url }}"  alt="back to top">
-</button>
+</div>
 

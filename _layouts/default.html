@@ -6,11 +6,11 @@
     <body>
         {% include header.html %}
 
-                        <div id="sitesetting_menu" style="border: solid 1px #111; position: absolute; color: black; ">
-                          <span id="sitesetting_menu__header">
-                            Settings
+               <div id="sitesetting_menu" style="border: solid 1px #111; position: absolute; color: black; ">
+                          <div id="sitesetting_menu__header">
+                            <span>Settings</span>
                             <a href="#" onclick="onclickSettings()" class="settingsicon"><img src="{{'/assets/icons/x.svg' | relative_url }}"  alt="Settings"></a>
-                          </span>
+                          </div>
                        
 
                         {% assign colorsettings=site.data.settings | where_exp:"settings", "settings.key contains 'color'" %}
