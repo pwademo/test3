@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
     <head>
-        {% include template/head.html %}  
+        {% include head.html %}  
     </head>
     <body>
-        {% include template/header.html %}
+        {% include header.html %}
 
         <div id="sitesetting_menu" style="border: solid 1px #111; position: absolute; color: black; ">
                         <span id="sitesetting_menu__header">Settings</span>
@@ -77,11 +77,11 @@
 
         {% if setting-nofooter.value!=true %}
             {% if page.nofooter!=true %}
-                {% include template/footer.html %} 
+                {% include footer.html %} 
             {% endif %}
         {% endif %}
 
-        {% include template/foot.html %}
+        {% include foot.html %}
 
 
         <script>

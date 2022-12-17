@@ -8,10 +8,14 @@
         }
     }
     // scroll to top function
-    function scrollToTop() {
-        $('html, body').animate({scrollTop: 0}, 750);
+    function scrollToTop() {       
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 </script>
-<button id="scroll-to-top" type="button" class="btn btn-link btn-lg" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
-    <span class="fas fa-angle-double-up"></span>
+<button  id="scroll-to-top" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
+    <img src="{{'/assets/icons/chevron-double-up.svg' | relative_url }}"  alt="back to top">
 </button>
+

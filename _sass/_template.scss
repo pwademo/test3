@@ -43,12 +43,15 @@ a {
 
 /* scroll to top */
 #scroll-to-top {
+    opacity: 0.2;
     display: none; 
     position: fixed; 
+    padding-top: 5px;
     bottom: 35px; 
     right: 20px; 
     z-index: 99;
-    font-size: 40px; 
+   
+   /*  font-size: 40px;  */
 }
 
 /* bootstrap icons tweaks */
