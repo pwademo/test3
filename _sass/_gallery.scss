@@ -1,42 +1,9 @@
-/* 
-    Template styles 
-    see assets/css/custom.scss for variables
-*/
-
-/*
-#buttons {
-     display:inline;  
-     float: right; 
-     padding-top:10px; 
-     border:solid red 1px; 
-}
-
-button {
-    cursor: pointer;
-    padding: 12px 4px;
-    margin-right: 3px;
-    background: transparent;
-    color:var(--font-color-menu);            
-    border:none;            
-    text-transform: uppercase;
-
-}
-
-button:disabled {
-    color: var(--font-color-menuactive);
-    cursor: auto;
-}
-button:hover:enabled{
-    color: var(--font-color-menuhover);
-}
-*/
 
 /*Billede - sætter max-widt og max-height i forhold til skærm*/
 .billede {
     max-width: 90vw;
      max-height: 70vh;  
 }
-
 
 
 /*include.removefilter wrapper i p-tag. For at undgå linjeskifte anvedes parent-selector */
@@ -66,12 +33,8 @@ p:has(span.filter) { display:inline-flex;}
   }
   
 
-
-
-
-
-
 h1{display:inline  }
+
 h2{
     font-size: larger; 
     margin-bottom: 10px;

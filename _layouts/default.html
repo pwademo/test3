@@ -251,8 +251,9 @@
             }  
 
         }
-        </script>
-        <script>     
+
+        
+
             var dragItem = document.querySelector("#sitesetting_menu");
             var dragItemHandel = document.querySelector("#sitesetting_menu__header");           
             var container = document.querySelector("body");
@@ -292,9 +293,6 @@
               if (e.target === dragItemHandel) {
                 active = true;
               }
-/*               if (e.target === dragItem) {
-                active = true;
-              } */
             }
 
             function dragEnd(e) {
@@ -328,6 +326,30 @@
             function setTranslate(xPos, yPos, el) {
               el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
             }
+
+
+            function onclickSettings(){
+              if (dragItem.style.display === "none") {
+                dragItem.style.display = "block";
+                localStorage.setItem("showSettings", true);
+              } else {
+                dragItem.style.display = "none";
+                localStorage.setItem("showSettings", false);
+              }
+            }
+
+
+            
+            let _show=localStorage.getItem("showSettings");
+            if(_show=="true")
+            {
+              dragItem.style.display = "block";
+            }
+            else {
+              dragItem.style.display = "none";
+            }
+
+
           </script>
 
 

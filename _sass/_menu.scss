@@ -89,7 +89,9 @@
   .navbar .menu .iconHamburger {
    display: none;
   }
-
+  .navbar .menu .settingsicon {    
+    margin-left: auto;
+   }
 
   .navbar .menu .iconHamburger>div {
     width: 25px;
@@ -125,8 +127,7 @@
     }
 
     .navbar .menu.responsive a {
-      display: block;   
-      
+      display: block;         
       
     }
 
