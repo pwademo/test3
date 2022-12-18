@@ -16,9 +16,10 @@
                         if(item.title) subtext+=`<p>${item.title} </p>`
                         if(item.year) subtext+=`<p>${item.year} </p>`
                         if(item.dimensions) subtext+=`<p>${item.dimensions} </p>`
-                        if(item.medium) subtext+=`<p>${item.medium} </p>`                
+                        if(item.medium) subtext+=`<p>${item.medium} </p>`
+                        if(item.location) subtext+=`<p>${item.location} </p>`                           
                         if(item.price) subtext+=`<p><b>${item.price}</b> </p>`
-                        if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>`
+                       /*  if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>` */
                         /*  
                         return  `                
                         <img class="billede" id="billede" style="pointer-events:unset;"  src="/workshop-example/gallery/${item.filename.replace(".jpeg","")}-900.jpeg" alt="">

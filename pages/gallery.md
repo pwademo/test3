@@ -9,6 +9,8 @@ nav_order: 2
 
 <!--  {% include buttonfilter.html type="forsale"  text="Til salg" %} -->
 <!--  {% include buttonfilter.html category="blomster"  text="Billeder med blomster" %} -->
+
+ {% include buttonfilter.html category="1850-1890"  text="Periode 1850-1890" %} 
  {% include buttonfilter.html category="1891-1893"  text="Periode 1891-1893" %}
  {% include buttonfilter.html category="1895-1903"  text="Periode 1895-1903" %} 
  {% include buttonfilter.html type="removefilter" text="X" %}

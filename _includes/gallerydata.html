@@ -26,7 +26,8 @@ hr {
               "order": {{ billede.order | default: 0 }},
               "hidden":{{ billede.hidden | default: false}},
               "weight":{{ billede.weight | default: 0}} ,
-              "weightrunningtotal":{{ running_total }}
+              "weightrunningtotal":{{ running_total }},
+              "location":'{{ billede.location }}'
           },
           {% endfor %}
         ]

@@ -10,7 +10,8 @@
             "sold": true,
             "order": 10,
             "hidden":false,
-            "weight": 10
+            "weight": 10,
+            "location": "Musée d Orsay, Paris"
         },
         {
             "filename": "1002.jpg",
@@ -62,7 +63,8 @@
             "sold": true,
             "order": 1,
             "hidden":false,
-            "weight": 10
+            "weight": 10,
+            "Art Institute of Chicago, Chicago"
         } ,
         {
             "filename": "1006.jpg",
@@ -75,7 +77,22 @@
             "sold": true,
             "order": 1,
             "hidden":false,
-            "weight": 10
+            "weight": 50,
+            "location": "Ny Carlsberg Glyptotek, København"
+        } ,
+        {
+            "filename": "1008.jpg",
+            "title":"Adam and Eve",
+            "dimensions":"59 x 37.9 cm",
+            "medium":"Oil on canvas",
+            "year":"1902",
+            "category":"1895-1903",
+            "price": "",
+            "sold": true,
+            "order": 1,
+            "hidden":false,
+            "weight": 10,
+            "location": "Ordrupgaard, Charlottenlund"
         } ,
         {
             "filename": "1007.jpg",
@@ -88,6 +105,63 @@
             "sold": true,
             "order": 1,
             "hidden":false,
-            "weight": 10
+            "weight": 10,
+            "location": "Metropolitan Museum of Art, New York City"
+        }  ,
+        {
+            "filename": "1009.jpg",
+            "title":"Portrait of a young woman. Vaïte (Jeanne) Goupil",
+            "dimensions":"75 x 65 cm",
+            "medium":"Oil on canvas",
+            "year":"1896",
+            "category":"1895-1903",
+            "price": "",
+            "sold": true,
+            "order": 1,
+            "hidden":false,
+            "weight": 10,
+            "location": "Ordrupgaard, Charlottenlund"
+        } ,
+        {
+            "filename": "1010.jpg",
+            "title":"Syende kvinde",
+            "dimensions":"114.5 cm x 79.5 cm",
+            "medium":"Oil on canvas",
+            "year":"1880",
+            "category":"1850-1890",
+            "price": "",
+            "sold": true,
+            "order": 1,
+            "hidden":false,
+            "weight": 10,
+            "location": "Ny Carlsberg Glyptotek, København"
+        } ,
+        {
+            "filename": "1011.jpg",
+            "title":"Loulou",
+            "dimensions":"55 x 46,2 cm",
+            "medium":"Oil on canvas",
+            "year":"1890",
+            "category":"1850-1890",
+            "price": "",
+            "sold": true,
+            "order": 1,
+            "hidden":false,
+            "weight": 10,
+            "location": "Barnes Foundation, Philadelphia"
+        } ,
+        {
+            "filename": "1012.jpg",
+            "title":"Tahitian Woman and Boy",
+            "dimensions":"94.6 x 61.9 cm",
+            "medium":"Oil on canvas",
+            "year":"1899",
+            "category":"1895-1903",
+            "price": "",
+            "sold": true,
+            "order": 1,
+            "hidden":false,
+            "weight": 10,
+            "location": "Norton Simon Museum, Pasadena, California"
         } 
 ]
