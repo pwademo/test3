@@ -9,7 +9,8 @@
             "price": "",
             "sold": true,
             "order": 10,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         },
         {
             "filename": "1002.jpg",
@@ -21,7 +22,8 @@
             "price": "",
             "sold": true,
             "order": 1,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         },
         {
             "filename": "1003.jpg",
@@ -33,7 +35,8 @@
             "price": "",
             "sold": true,
             "order": 1,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         },
         {
             "filename": "1004.jpg",
@@ -45,7 +48,8 @@
             "price": "",
             "sold": true,
             "order": 1,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         },
         {
             "filename": "1005.jpg",
@@ -57,7 +61,8 @@
             "price": "",
             "sold": true,
             "order": 1,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         } ,
         {
             "filename": "1006.jpg",
@@ -69,7 +74,8 @@
             "price": "",
             "sold": true,
             "order": 1,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         } ,
         {
             "filename": "1007.jpg",
@@ -81,6 +87,7 @@
             "price": "",
             "sold": true,
             "order": 1,
-            "hidden":false
+            "hidden":false,
+            "weight": 10
         } 
 ]

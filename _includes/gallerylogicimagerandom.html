@@ -26,8 +26,10 @@ function displayImages(data,filename){
                         </div>
                         `   
                         */
-                        return  `                
+                        return  `
+                        <a href="/workshop-example/gallery.html">                   
                         <img class="billede" id="billede" style="cursor: pointer;"  src="/workshop-example/gallery/${item.filename}" alt="">
+                        </a>
                         <div>
                             ${subtext}
                         </div>
@@ -36,7 +38,11 @@ function displayImages(data,filename){
         }
 
 
-let item=myJson[Math.floor(Math.random() * myJson.length)];
+const last=myJson[myJson.length-1];//get last item in myJson
+const sum=last.weightrunningtotal;//get the value weightrunningtotal
+const random=Math.floor(Math.random() * sum)//generate random value bettween 0 and weightrunningtotal
+const idx=myJson.findIndex(item=>item.weightrunningtotal>random);//get index of item with weightrunningtotal>random
+const item=myJson[idx];
 displayImages(myJson,item.filename);
 
     

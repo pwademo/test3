@@ -9,9 +9,11 @@ hr {
 }
 </style>
 <script>
+    {% assign running_total = 0 %}
     const myJson = 
         [
           {% for billede in site.data.gallery %}
+          {% assign running_total = running_total | plus: billede.weight %}
           {         
               "filename": '{{ billede.filename }}',
               "title":'{{ billede.title }}',
@@ -22,7 +24,9 @@ hr {
               "price": '{{ billede.price }}',
               "sold": {{ billede.sold | default: false}},
               "order": {{ billede.order | default: 0 }},
-              "hidden":{{ billede.hidden | default: false}} 
+              "hidden":{{ billede.hidden | default: false}},
+              "weight":{{ billede.weight | default: 0}} ,
+              "weightrunningtotal":{{ running_total }}
           },
           {% endfor %}
         ]
