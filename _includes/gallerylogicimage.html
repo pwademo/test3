@@ -22,14 +22,14 @@
                        /*  if(item.sold===true) subtext+=`<p><b>SOLGT</b> </p>` */
                         /*  
                         return  `                
-                        <img class="billede" id="billede" style="pointer-events:unset;"  src="/workshop-example/gallery/${item.filename.replace(".jpeg","")}-900.jpeg" alt="">
+                        <img class="billede" id="billede" style="pointer-events:unset;"  src="/test3/gallery/${item.filename.replace(".jpeg","")}-900.jpeg" alt="">
                         <div>
                             ${subtext}
                         </div>
                         `   
                         */
                         return  `                
-                        <img class="billede" id="billede" style="cursor: pointer;"  src="/workshop-example/gallery/${item.filename}" alt="">
+                        <img class="billede" id="billede" style="cursor: pointer;"  src="/test3e/gallery/${item.filename}" alt="">
                         <div>
                             ${subtext}
                         </div>
@@ -47,7 +47,7 @@
     if(lastPageUrl){
         let lasturl=new URL(lastPageUrl);
         
-        if(lasturl.pathname=="/workshop-example/gallery.html"){
+        if(lasturl.pathname=="/test3/gallery.html"){
 
             document.querySelector(".grid-container").addEventListener("click",()=>
             { 
@@ -58,7 +58,7 @@
         else {            
             document.querySelector(".grid-container").addEventListener("click",()=>
             { 
-                window.location.pathname = ('/workshop-example/gallery.html')
+                window.location.pathname = ('/test2/gallery.html')
             });
         }
 
